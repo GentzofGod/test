@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Products | NOVA Store</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <!-- Announcement Bar -->
+    <div class="announcement-bar">
+        ⚡ Seasonal Deals: Enjoy 20% off with promo code <strong>NOVAFIRST</strong> | Fast 2-Day Priority Delivery
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="logo">
+                <span class="logo-icon">✦</span> NOVA
+            </a>
+            <ul class="nav-links">
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="products.html" class="nav-link active">Shop All</a></li>
+                <li><a href="products.html?category=Audio" class="nav-link">Audio</a></li>
+                <li><a href="products.html?category=Wearables" class="nav-link">Wearables</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="../login.html" class="nav-btn">Sign In</a>
+                <button class="nav-btn cart-badge-btn" id="open-cart-btn" aria-label="View Cart">
+                    🛒 Cart <span class="cart-badge" id="cart-count">0</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Catalog Page Container -->
+    <main class="product-section" style="margin-top: 2.5rem;">
+        <div class="section-header" style="text-align: left; margin-bottom: 2rem;">
+            <span class="section-badge">Store Catalog</span>
+            <h1 class="section-title">Engineered Hardware & Accessories</h1>
+            <p class="section-desc">Explore cutting edge audio, intelligent accessories, and creator tech essentials.</p>
+        </div>
+
+        <!-- Filter & Search Toolbar -->
+        <div class="catalog-toolbar">
+            <div class="filter-tabs" id="category-filter-tabs">
+                <button class="filter-tab active" data-cat="all">All Products</button>
+                <button class="filter-tab" data-cat="Audio">Audio</button>
+                <button class="filter-tab" data-cat="Wearables">Wearables</button>
+                <button class="filter-tab" data-cat="Accessories">Accessories</button>
+            </div>
+            <div class="toolbar-controls">
+                <div class="search-input-box">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" id="search-product-input" placeholder="Search products...">
+                </div>
+                <select class="sort-select" id="sort-select">
+                    <option value="featured">Sort by: Featured</option>
+                    <option value="price-low">Price: Low to High</option>
+                    <option value="price-high">Price: High to Low</option>
+                    <option value="rating">Highest Rated</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Product Grid -->
+        <div class="products-grid" id="catalog-grid">
+            <!-- Populated via JavaScript -->
+        </div>
+    </main>
+
+    <!-- Cart Drawer -->
+    <div class="cart-overlay" id="cart-overlay"></div>
+    <aside class="cart-drawer" id="cart-drawer">
+        <div class="cart-header">
+            <h3>Your Cart (<span id="cart-items-count">0</span>)</h3>
+            <button class="cart-close-btn" id="close-cart-btn">&times;</button>
+        </div>
+        <div class="cart-items-list" id="cart-items-list">
+            <!-- Populated dynamically -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-summary-line">
+                <span>Subtotal</span>
+                <span id="cart-subtotal">$0.00</span>
+            </div>
+            <div class="cart-summary-line">
+                <span>Shipping</span>
+                <span id="cart-shipping">Calculated next</span>
+            </div>
+            <div class="cart-total-line">
+                <span>Total</span>
+                <span id="cart-total-amount">$0.00</span>
+            </div>
+            <button class="btn-checkout" id="checkout-btn">Proceed to Checkout</button>
+        </div>
+    </aside>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast-notification">Product added to cart!</div>
+
+    <!-- Checkout Modal -->
+    <div class="checkout-modal-overlay" id="checkout-modal">
+        <div class="checkout-modal">
+            <div class="checkout-icon">✓</div>
+            <h3 style="font-size: 1.4rem; margin-bottom: 0.5rem; font-weight: 800;">Order Placed Successfully!</h3>
+            <p style="color: var(--text-muted); margin-bottom: 1.5rem; font-size: 0.95rem;">
+                Thank you for shopping with Nova. Your order details and tracking receipt have been dispatched.
+            </p>
+            <button class="btn btn-primary" style="width: 100%;" id="close-checkout-modal">Back to Shopping</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-brand">
+                <a href="../index.html" class="logo">
+                    <span class="logo-icon">✦</span> NOVA
+                </a>
+                <p>Crafting modern lifestyle essentials and audio hardware engineered for precision, comfort, and sustainability.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Shop</h4>
+                <ul class="footer-links">
+                    <li><a href="products.html">All Products</a></li>
+                    <li><a href="products.html?category=Audio">Audio Gear</a></li>
+                    <li><a href="products.html?category=Wearables">Wearables</a></li>
+                    <li><a href="products.html?category=Accessories">Accessories</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Customer Care</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Track Order</a></li>
+                    <li><a href="#">Returns & Refunds</a></li>
+                    <li><a href="#">Warranty Guarantee</a></li>
+                    <li><a href="#">Help Center</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Newsletter</h4>
+                <p style="font-size: 0.88rem; margin-bottom: 0.75rem;">Stay ahead with the latest releases and exclusive VIP pricing.</p>
+                <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed successfully!');">
+                    <input type="email" placeholder="Your email address..." required>
+                    <button type="submit">Join</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-bottom-inner">
+                <div>&copy; 2025 Nova Store Inc. All rights reserved.</div>
+                <div style="display: flex; gap: 1.5rem;">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../app.js"></script>
+    <script>
+        // Catalog filter & sort logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const grid = document.getElementById('catalog-grid');
+            const filterTabs = document.querySelectorAll('.filter-tab');
+            const searchInput = document.getElementById('search-product-input');
+            const sortSelect = document.getElementById('sort-select');
+
+            let activeCategory = 'all';
+            let searchQuery = '';
+            let currentSort = 'featured';
+
+            // Check URL query parameters
+            const params = new URLSearchParams(window.location.search);
+            const urlCat = params.get('category');
+            if (urlCat) {
+                activeCategory = urlCat;
+                filterTabs.forEach(t => {
+                    if (t.dataset.cat.toLowerCase() === urlCat.toLowerCase()) {
+                        filterTabs.forEach(tab => tab.classList.remove('active'));
+                        t.classList.add('active');
+                    }
+                });
+            }
+
+            function applyFiltersAndRender() {
+                let filtered = [...PRODUCTS];
+
+                if (activeCategory !== 'all') {
+                    filtered = filtered.filter(p => p.category.toLowerCase() === activeCategory.toLowerCase());
+                }
+
+                if (searchQuery.trim()) {
+                    const q = searchQuery.toLowerCase();
+                    filtered = filtered.filter(p => p.name.toLowerCase().includes(q) || p.description.toLowerCase().includes(q));
+                }
+
+                if (currentSort === 'price-low') {
+                    filtered.sort((a, b) => a.price - b.price);
+                } else if (currentSort === 'price-high') {
+                    filtered.sort((a, b) => b.price - a.price);
+                } else if (currentSort === 'rating') {
+                    filtered.sort((a, b) => b.rating - a.rating);
+                }
+
+                if (filtered.length === 0) {
+                    grid.innerHTML = `
+                        <div style="grid-column: 1 / -1; text-align: center; padding: 4rem 1rem;">
+                            <div style="font-size: 3rem; margin-bottom: 1rem;">🔍</div>
+                            <h3 style="color: var(--dark); margin-bottom: 0.5rem;">No matching products found</h3>
+                            <p style="color: var(--text-muted);">Try adjusting your search query or category filters.</p>
+                        </div>
+                    `;
+                } else {
+                    grid.innerHTML = filtered.map(renderProductCard).join('');
+                }
+            }
+
+            filterTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    filterTabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    activeCategory = tab.dataset.cat;
+                    applyFiltersAndRender();
+                });
+            });
+
+            if (searchInput) {
+                searchInput.addEventListener('input', (e) => {
+                    searchQuery = e.target.value;
+                    applyFiltersAndRender();
+                });
+            }
+
+            if (sortSelect) {
+                sortSelect.addEventListener('change', (e) => {
+                    currentSort = e.target.value;
+                    applyFiltersAndRender();
+                });
+            }
+
+            applyFiltersAndRender();
+        });
+    </script>
+</body>
+</html>
